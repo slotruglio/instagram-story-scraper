@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # local data
-./path.txt
-./users.txt
+path.txt
+users.txt
