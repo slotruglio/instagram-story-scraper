@@ -57,7 +57,7 @@ def save_stories_of_user(username):
         link = "https://insta-stories.online"+img['href']
         print(colored("\n[INFO]: getting story: " + data + " of user: " + username, "yellow"))
         response = requests.get(link)
-        os.makedirs(username, exist_ok=True)
+        os.makedirs("collected_data/"+username, exist_ok=True)
 
         path = "./"+username+"/"+username+str(count)+"_"+str(data).replace(":","_")+extension
         print(colored("\n[SUCCESS]: saving in path: " + path, "green"))
@@ -70,7 +70,7 @@ def save_stories_of_user(username):
 isMoreThanOne = False
 users = []
 
-if sys.argv[1] is None or sys.argv[1] == "":
+if len(sys.argv) == 1:
     with open('./users.txt', "r") as f:
         for line in f:
             users.append(line.strip())
@@ -95,7 +95,7 @@ else:
         print(colored("\n[ERROR]: stories not saved for user: " + username, "red"))
 
 if isMoreThanOne:
-    print(colored("\n[INFO]: getting stories for users in file: " + str(sys.argv[1]), "yellow"))
+    print(colored("\n[INFO]: getting stories for users", "yellow"))
     for username in users :
             result = save_stories_of_user(username)
 

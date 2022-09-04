@@ -131,3 +131,5 @@ dmypy.json
 # local data
 path.txt
 users.txt
+collected_data/
+.DS_Store
