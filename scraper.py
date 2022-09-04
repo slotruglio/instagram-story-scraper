@@ -4,11 +4,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from termcolor import colored
+from datetime import date
 import os
 import sys
 import requests
 
 path_of_chrome = ""
+date = date.today().strftime("%Y_%m_%d")
 
 with open("path.txt", "r") as f:
     path_of_chrome = f.read().strip()
@@ -59,7 +61,7 @@ def save_stories_of_user(username):
         response = requests.get(link)
         os.makedirs("collected_data/"+username, exist_ok=True)
 
-        path = "./"+username+"/"+username+str(count)+"_"+str(data).replace(":","_")+extension
+        path = "./"+"collected_data/"+username+"/"+username+str(count)+"_"+date+"_"+str(data).replace(":","_")+extension
         print(colored("\n[SUCCESS]: saving in path: " + path, "green"))
 
         open(path, "wb").write(response.content)
